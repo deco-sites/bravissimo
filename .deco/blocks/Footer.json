@@ -1,1 +1,11 @@
-{"__resolveType":"site/sections/Footer.tsx","links":[],"bottomLinks":[],"social":[],"subscribe":{}}
+{
+  "__resolveType": "site/sections/Footer.tsx",
+  "links": [],
+  "bottomLinks": [],
+  "social": [],
+  "subscribe": {},
+  "copyright": "Bravissimo",
+  "madeWith": {
+    "label": "This is an example for"
+  }
+}
