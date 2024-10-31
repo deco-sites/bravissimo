@@ -39,6 +39,12 @@
       "section": {
         "__resolveType": "hero"
       }
+    },
+    {
+      "__resolveType": "website/sections/Rendering/Lazy.tsx",
+      "section": {
+        "__resolveType": "site/sections/ProductShelf.tsx"
+      }
     }
   ],
   "__resolveType": "website/pages/Page.tsx",

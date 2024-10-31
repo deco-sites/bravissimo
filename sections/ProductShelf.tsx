@@ -1,6 +1,8 @@
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
-import Slider from "apps/website/components/Slider.tsx";
+import Slider from "../components/ui/Slider.tsx";
+import { clx } from "../sdk/clx.ts";
+
 
 export interface Props {
   /** @format rich-text */
@@ -21,11 +23,18 @@ export default function ProductShelf({ title = "Featured Products", products = d
   return (
     <div class="container mx-auto py-8 overflow-hidden">
       <h2 class="text-2xl font-bold mb-4 text-center">{title}</h2>
-      <Slider class="gap-4" itemClass="carousel-item w-full md:w-1/2 lg:w-1/5" snap="snap-center">
+      <Slider class="carousel carousel-center sm:carousel-end gap-5 sm:gap-10 w-full">
         {products.map((product, index) => (
-          <div key={index} class="card bordered">
+          <Slider.Item
+            index={index}
+            class={clx(
+              "carousel-item",
+              "first:pl-5 first:sm:pl-0",
+              "last:pr-5 last:sm:pr-0",
+            )}
+          >
             <figure class="px-4 pt-4">
-              <Image src={product.image} alt={product.name} width={200} height={200} class="rounded" />
+              <Image src={product.image?.toString()} alt={product.name} width={200} height={200} class="rounded" />
             </figure>
             <div class="card-body">
               <h3 class="card-title">{product.name}</h3>
@@ -35,7 +44,7 @@ export default function ProductShelf({ title = "Featured Products", products = d
                 <button class="btn btn-primary">Add to Cart</button>
               </div>
             </div>
-          </div>
+          </Slider.Item>
         ))}
       </Slider>
     </div>
