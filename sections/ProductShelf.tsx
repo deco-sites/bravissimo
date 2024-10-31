@@ -1,6 +1,6 @@
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
-import Slider from "apps/website/components/Slider.tsx";
+import Slider from "deco-sites/std/components/Slider.tsx";
 
 export interface Props {
   /** @format rich-text */
@@ -19,20 +19,24 @@ export interface ProductProps {
 
 export default function ProductShelf({ title = "Featured Products", products = defaultProducts }: Props) {
   return (
-    <div class="container mx-auto py-8 overflow-hidden">
-      <h2 class="text-2xl font-bold mb-4 text-center">{title}</h2>
-      <Slider class="gap-4" itemClass="carousel-item w-full md:w-1/2 lg:w-1/5" snap="snap-center">
+    <div className="container mx-auto py-8 overflow-hidden">
+      <h2 className="text-2xl font-bold mb-4 text-center">{title}</h2>
+      <Slider className="gap-4" itemsPerPage={{
+        desktop: { 0: 5 },
+        tablet: { 0: 3 },
+        phone: { 0: 2 },
+      }}>
         {products.map((product, index) => (
-          <div key={index} class="card bordered">
-            <figure class="px-4 pt-4">
-              <Image src={product.image} alt={product.name} width={200} height={200} class="rounded" />
+          <div key={index} className="card bordered w-full md:w-1/2 lg:w-1/5">
+            <figure className="px-4 pt-4">
+              <Image src={product.image} alt={product.name} width={200} height={200} className="rounded" />
             </figure>
-            <div class="card-body">
-              <h3 class="card-title">{product.name}</h3>
+            <div className="card-body">
+              <h3 className="card-title">{product.name}</h3>
               <p>{product.description}</p>
-              <div class="card-actions justify-end">
-                <span class="text-xl font-bold">${product.price?.toFixed(2)}</span>
-                <button class="btn btn-primary">Add to Cart</button>
+              <div className="card-actions justify-end">
+                <span className="text-xl font-bold">${product.price?.toFixed(2)}</span>
+                <button className="btn btn-primary">Add to Cart</button>
               </div>
             </div>
           </div>
