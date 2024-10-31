@@ -1,5 +1,6 @@
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
+import Slider from "apps/website/components/Slider.tsx";
 
 export interface Props {
   /** @format rich-text */
@@ -18,9 +19,9 @@ export interface ProductProps {
 
 export default function ProductShelf({ title = "Featured Products", products = defaultProducts }: Props) {
   return (
-    <div class="container mx-auto py-8">
+    <div class="container mx-auto py-8 overflow-hidden">
       <h2 class="text-2xl font-bold mb-4 text-center">{title}</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <Slider class="gap-4" itemClass="carousel-item w-full md:w-1/2 lg:w-1/5" snap="snap-center">
         {products.map((product, index) => (
           <div key={index} class="card bordered">
             <figure class="px-4 pt-4">
@@ -36,7 +37,7 @@ export default function ProductShelf({ title = "Featured Products", products = d
             </div>
           </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 }
