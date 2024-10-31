@@ -1,5 +1,3 @@
-Here's a product shelf component with 10 products:
-
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
 
